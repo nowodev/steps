@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div>
       <Steps />
-      {/* <Steps /> */}
+      <Steps />
     </div>
   );
 }
@@ -20,23 +20,21 @@ function Steps() {
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    if (step > 1) setStep((s) => s - 1);
+    if (step > 1) setStep((s) => s - 1)
   }
 
   function handleNext() {
     if (step < 3) {
-      setStep((s) => s + 1);
+      setStep((s) => s + 1)
       // setStep((s) => s + 1)
     }
   }
 
   return (
     <div>
-      <button className="close" onClick={() => setIsOpen((is) => !is)}>
-        &times;
-      </button>
+      <button className="close" onClick={() => setIsOpen((is) => !is)}>&times;</button>
 
-      {isOpen && (
+      {isOpen &&
         <div className="steps">
           <div className="numbers">
             <div className={step >= 1 ? "active" : ""}>1</div>
@@ -44,31 +42,14 @@ function Steps() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <p className="message">
-            Step {step}: {messages[step - 1]}
-          </p>
+          <p className="message">Step {step}: {messages[step - 1]}</p>
 
           <div className="buttons">
-            <Button bgColor="#7950f2" textColor="#fff" onClick={handlePrevious}>
-              <span>👈</span> Previous
-            </Button>
-            <Button bgColor="#7950f2" textColor="#fff" onClick={handleNext}>
-              Next <span>👉</span>
-            </Button>
+            <button onClick={handlePrevious} style={{ backgroundColor: "#7950f2", color: "#fff" }}>Previous</button>
+            <button onClick={handleNext} style={{ backgroundColor: "#7950f2", color: "#fff" }}>Next</button>
           </div>
         </div>
-      )}
+      }
     </div>
-  );
-}
-
-function Button({ textColor, bgColor, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{ backgroundColor: bgColor, color: textColor }}
-    >
-      {children}
-    </button>
-  );
+  )
 }
